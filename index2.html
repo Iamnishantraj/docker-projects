@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paytm Quick DTH Recharge</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .recharge-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 34px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .logo span.pay {
+            color: #00baf2;
+        }
+
+        .logo span.tm {
+            color: #002e6e;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 14px;
+        }
+
+        h2 {
+            color: #1d2f44;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            border-bottom: 2px solid #00baf2;
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: #4a5568;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d4dbe0;
+            border-radius: 8px;
+            font-size: 15px;
+            color: #2d3748;
+            outline: none;
+            background-color: #fff;
+            transition: all 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #00baf2;
+            box-shadow: 0 0 0 3px rgba(0, 186, 242, 0.15);
+        }
+
+        .amount-wrapper {
+            position: relative;
+        }
+
+        .amount-wrapper span {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #718096;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .amount-wrapper input {
+            padding-left: 32px;
+        }
+
+        .fast-forward {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .fast-forward input {
+            width: auto;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #00baf2;
+        }
+
+        .fast-forward label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        .fast-forward span {
+            color: #a0aec0;
+            font-size: 12px;
+            display: block;
+            margin-top: 2px;
+        }
+
+        .btn-recharge {
+            width: 100%;
+            padding: 16px;
+            background-color: #00baf2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-recharge:hover {
+            background-color: #0099c8;
+        }
+
+        .secure-badge {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #718096;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="recharge-container">
+        <!-- Brand Header -->
+        <div class="brand-header">
+            <div class="logo"><span class="pay">pay</span><span class="tm">tm</span></div>
+            <p class="tagline">Instant DTH Recharge</p>
+        </div>
+
+        <h2>DTH Account Details</h2>
+
+        <form action="#" method="POST">
+            <!-- Operator Selection -->
+            <div class="form-group">
+                <label for="operator">Select DTH Operator</label>
+                <select id="operator" name="operator" required>
+                    <option value="" disabled selected>Choose Operator</option>
+                    <option value="tata-play">Tata Play (Tata Sky)</option>
+                    <option value="dish-tv">Dish TV</option>
+                    <option value="airtel-dth">Airtel Digital TV</option>
+                    <option value="videocon-d2h">Videocon d2h</option>
+                    <option value="sun-direct">Sun Direct</option>
+                </select>
+            </div>
+
+            <!-- Subscriber ID / Smart Card Number -->
+            <div class="form-group">
+                <label for="subscriber-id">Subscriber ID / Customer ID</label>
+                <input type="text" id="subscriber-id" name="subscriberId" placeholder="Enter Subscriber ID" required>
+            </div>
+
+            <!-- Recharge Amount -->
+            <div class="form-group">
+                <label for="amount">Recharge Amount</label>
+                <div class="amount-wrapper">
+                    <span>₹</span>
+                    <input type="number" id="amount" name="amount" min="10" placeholder="Enter Amount" required>
+                </div>
+            </div>
+
+            <!-- Fast Forward Features -->
+            <div class="fast-forward">
+                <input type="checkbox" id="fastforward" name="fastforward">
+                <div>
+                    <label for="fastforward">Fast Forward</label>
+                    <span>Instant payment using your Paytm Wallet balance</span>
+                </div>
+            </div>
+
+            <!-- Action Button -->
+            <button type="submit" class="btn-recharge">Proceed to Pay</button>
+        </form>
+
+        <!-- Secure Transaction Tag -->
+        <div class="secure-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% Secure Payments
+        </div>
+    </div>
+
+</body>
+</html>
