@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PayPulse | Mobile Recharge</title>
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://tailwindcss.com"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Recharge Component Container -->
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-md rounded-2xl shadow-2xl p-6 md:p-8">
+
+        <!-- Header -->
+        <div class="flex items-center gap-4 mb-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-emerald-600 text-white font-bold text-xl shadow-lg shadow-emerald-600/30">
+                📱
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">Instant Mobile Recharge</h1>
+                <p class="text-slate-400 text-sm">Prepaid & Postpaid plans instantly</p>
+            </div>
+        </div>
+
+        <!-- Recharge Form -->
+        <form onsubmit="handleRecharge(event)" class="space-y-5">
+            <!-- Mobile Number -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Mobile Number</label>
+                <input type="tel" id="mobileNumber" required maxlength="10" pattern="[0-9]{10}" placeholder="Enter 10-digit number"
+                    class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+            </div>
+
+            <!-- Operator & Circle Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Operator</label>
+                    <select id="operator" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all cursor-pointer">
+                        <option value="Jio">Jio</option>
+                        <option value="Airtel">Airtel</option>
+                        <option value="Vi">Vi (Vodafone Idea)</option>
+                        <option value="BSNL">BSNL</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Circle</label>
+                    <select id="circle" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all cursor-pointer">
+                        <option value="Bihar">Bihar & JH</option>
+                        <option value="Delhi">Delhi NCR</option>
+                        <option value="Mumbai">Mumbai</option>
+                        <option value="Karnataka">Karnataka</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Amount Input -->
+            <div>
+                <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Recharge Amount (₹)</label>
+                <div class="relative flex items-center">
+                    <span class="absolute left-4 text-slate-500 font-medium">₹</span>
+                    <input type="number" id="amount" required min="10" placeholder="Enter amount"
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-8 pr-4 py-3.5 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all">
+                </div>
+            </div>
+
+            <!-- Proceed Button -->
+            <button type="submit"
+                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-emerald-600/20 active:scale-[0.99] mt-2">
+                Proceed to Pay
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function handleRecharge(e) {
+            e.preventDefault();
+            const num = document.getElementById('mobileNumber').value;
+            const op = document.getElementById('operator').value;
+            const amt = document.getElementById('amount').value;
+            alert(`Processing ₹${amt} recharge for ${op} number: +91 ${num}`);
+        }
+    </script>
+</body>
+</html>
