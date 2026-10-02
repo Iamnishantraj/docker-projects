@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RailPass | Book Train Tickets</title>
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://tailwindcss.com"></script>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex items-center justify-center p-4">
+
+    <!-- Dashboard/Booking Form Container -->
+    <div class="bg-slate-900 border border-slate-800 w-full max-w-2xl rounded-2xl shadow-2xl p-6 md:p-8">
+
+        <!-- Header -->
+        <div class="flex items-center gap-4 mb-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-blue-600 text-white font-bold text-xl shadow-lg shadow-blue-600/30">
+                🚂
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold tracking-tight">IRCTC Train Booking</h1>
+                <p class="text-slate-400 text-sm">Quick confirmation & instant refunds</p>
+            </div>
+        </div>
+
+        <!-- Search Form -->
+        <form onsubmit="handleSearch(event)" class="space-y-6">
+            <!-- Stations Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">From Station</label>
+                    <input type="text" id="fromStation" required placeholder="e.g. New Delhi (NDLS)"
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">To Station</label>
+                    <input type="text" id="toStation" required placeholder="e.g. Mumbai Central (MMCT)"
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white placeholder-slate-600 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                </div>
+            </div>
+
+            <!-- Date & Class Row -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Journey Date</label>
+                    <input type="date" id="journeyDate" required
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Quota / Class</label>
+                    <select id="travelClass"
+                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all cursor-pointer">
+                        <option value="All">All Classes</option>
+                        <option value="1A">AC First Class (1A)</option>
+                        <option value="2A">AC 2 Tier (2A)</option>
+                        <option value="3A">AC 3 Tier (3A)</option>
+                        <option value="SL">Sleeper Class (SL)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                <button type="submit"
+                    class="flex-1 bg-blue-600 hover:bg-blue-500 text-white font-medium py-3.5 px-4 rounded-xl transition-all shadow-lg shadow-blue-600/20 active:scale-[0.99]">
+                    Search Trains
+                </button>
+                <button type="button" onclick="window.location.href='https://paytm.com'"
+                    class="bg-slate-950 hover:bg-slate-950/80 border border-slate-800 text-slate-300 font-medium py-3.5 px-6 rounded-xl transition-all">
+                    Check PNR Status
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Set tomorrow's date as default
+        const dateInput = document.getElementById('journeyDate');
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        dateInput.value = tomorrow.toISOString().split('T')[0];
+
+        function handleSearch(e) {
+            e.preventDefault();
+            const from = document.getElementById('fromStation').value;
+            const to = document.getElementById('toStation').value;
+            const date = document.getElementById('journeyDate').value;
+            alert(`Searching trains from ${from} to ${to} on ${date}...`);
+        }
+    </script>
+</body>
+</html>
