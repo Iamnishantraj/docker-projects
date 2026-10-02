@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+
+  movies:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - HTML_FILE=index.html
+    image: movies:v1
+    ports:
+      - "81:80"
+
+  train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - HTML_FILE=index2.html
+    image: train:v1
+    ports:
+      - "82:80"
+
+  dth:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - HTML_FILE=index3.html
+    image: dth:v1
+    ports:
+      - "83:80"
+
+  recharge:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - HTML_FILE=index4.html
+    image: recharge:v1
+    ports:
+      - "84:80"
